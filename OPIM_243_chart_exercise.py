@@ -6,7 +6,7 @@ Created on Wed Feb  6 17:38:18 2019
 @author: madeline
 """
 
-import plotly
+import plotly as py
 import plotly.graph_objs as go
 
 pie_data = [
@@ -18,8 +18,21 @@ pie_data = [
 print("----------------")
 print("GENERATING PIE CHART...")
 print(pie_data) # TODO: create a pie chart based on the pie_data
-
 #
+
+labels = []
+values = []
+for i in range(0, len(pie_data)):
+    labels.append(pie_data[i]['company'])
+    values.append(pie_data[i]['market_share'])
+
+layout = {'title': 'Industry Market Share'}
+trace = go.Pie(labels=labels, values=values, title='Industry Market Share')
+
+
+py.offline.plot([trace], filename="basic_pie_chart.html", auto_open=True)
+
+
 # CHART 2 (LINE)
 #
 
@@ -37,6 +50,17 @@ line_data = [
 print("----------------")
 print("GENERATING LINE GRAPH...")
 print(line_data) # TODO: create a line graph based on the line_data
+
+x = []
+y = []
+for i in range(0, len(line_data)):
+    x.append(line_data[i]['date'])
+    y.append(line_data[i]['stock_price_usd'])
+
+py.offline.plot({
+    "data": [go.Scatter(x=x, y=y)],
+    "layout": go.Layout(title="Stock Price Over Time")
+}, auto_open=True)
 
 #
 # CHART 3 (HORIZONTAL BAR)
