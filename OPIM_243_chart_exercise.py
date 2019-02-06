@@ -22,6 +22,7 @@ print(pie_data) # TODO: create a pie chart based on the pie_data
 
 labels = []
 values = []
+
 for i in range(0, len(pie_data)):
     labels.append(pie_data[i]['company'])
     values.append(pie_data[i]['market_share'])
@@ -31,7 +32,6 @@ trace = go.Pie(labels=labels, values=values, title='Industry Market Share')
 
 
 py.offline.plot([trace], filename="basic_pie_chart.html", auto_open=True)
-
 
 # CHART 2 (LINE)
 #
@@ -79,3 +79,18 @@ bar_data = [
 print("----------------")
 print("GENERATING BAR CHART...")
 print(bar_data) # TODO: create a horizontal bar chart based on the bar_data
+
+x = []
+y = []
+
+for i in range(0, len(bar_data)):
+    x.append(bar_data[i]['genre'])
+    y.append(bar_data[i]['viewers'])
+data = [go.Bar(
+            x=x,
+            y=y
+    )]
+layout = go.Layout(title='Viewers Per Genre')
+figure = go.Figure(data = data,layout=layout)
+py.offline.plot(figure, filename='basic-bar.html', auto_open = True)
+
