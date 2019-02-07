@@ -84,8 +84,8 @@ x = []
 y = []
 
 for i in range(0, len(bar_data)):
-    x.append(bar_data[i]['genre'])
-    y.append(bar_data[i]['viewers'])
+    y.append(bar_data[i]['genre'])
+    x.append(bar_data[i]['viewers'])
 data = [go.Bar(
             x=x,
             y=y,
@@ -93,5 +93,5 @@ data = [go.Bar(
     )]
 layout = go.Layout(title='Viewers Per Genre')
 figure = go.Figure(data = data,layout=layout)
-py.offline.plot(figure, filename='basic-bar.html', auto_open = True)
+py.offline.plot(figure, filename='horizontal-bar.html', auto_open = True)
 
