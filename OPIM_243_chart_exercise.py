@@ -88,7 +88,8 @@ for i in range(0, len(bar_data)):
     y.append(bar_data[i]['viewers'])
 data = [go.Bar(
             x=x,
-            y=y
+            y=y,
+    orientation = 'h'
     )]
 layout = go.Layout(title='Viewers Per Genre')
 figure = go.Figure(data = data,layout=layout)
